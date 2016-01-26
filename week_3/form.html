@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.6.0/mootools.min.js"></script>
+        <script src="js/moomore.js"></script>
+        <script src="js/plugins/formcheck/lang/en.js"></script>
+        <script src="js/plugins/formcheck/formcheck-yui.js"></script>
+        <link rel="stylesheet" href="js/plugins/formcheck/theme/blue/formcheck.css" media="screen" type="text/css"></script>
+        <style>
+            label, button {
+                display: block;
+                margin: 10px 0 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Fried Chicken Delivered
+        </h1>
+        <form id="chicken_form" action="test.php" method="post" enctype="multipart/form-data">
+            <label>
+                Name: <input type="text" name="name" class="validate['required','length[2,-1]']" />
+            </label>
+            <label>
+                Address: <input type="text" name="address1" class="validate['required']" />
+            </label>
+            <label>
+                Address: <input type="text" name="address2" class="" />
+            </label>
+            <label>
+                City: <input type="text" name="city" class="validate['required']" />
+            </label>
+            <label>
+                State: <input type="text" name="state" class="validate['required','length[2,2]']" />
+            </label>
+            <label>
+                Zip: <input type="text" name="name" class="validate['required','length[5,10]']" />
+            </label>
+            <label>
+                E-mail: <input type="text" name="email" class="validate['required','email']" />
+            </label>
+            <label>
+                Password: <input type="password" name="password" class="validate['required','length[5,45]']" />
+            </label>
+            <label>
+                Verify Password: <input type="password" name="password_verify" class="validate['required','%checkPass']" />
+            </label>
+            <button type="submit">
+                Mail it!
+            </button>
+        </form>
+        
+        <script>
+            function checkPass(el){
+                var passBox = document.getElement("input[name=password]");
+                console.log(passBox.value, el.value);
+                if(passBox.value == el.value){
+                    return true;
+                }else{
+                    el.errors.push("Password and verification must match");
+                    return false;
+                }
+            }
+            
+            new FormCheck("chicken_form", {
+                display:{
+                    flashTips: 1
+                },
+                
+                alerts:{
+                    required: "Fill it in, fool!",
+                    email: "Dude, that's not your email. C'mon!"
+                }
+            });
+        </script>
+    </body>
+</html>

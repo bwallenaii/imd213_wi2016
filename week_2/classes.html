@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.6.0/mootools.min.js"></script>
+        <script>
+        
+            var Cat = new Class({
+                
+                Implements: [Options],
+                
+                options: {
+                    color: "black",
+                    eyeColor: "yellow",
+                    size: 0,
+                    gender: "f",
+                    name: ""
+                },
+                sizeTypes: [
+                    "small", 
+                    "medium", 
+                    "large", 
+                    "xtra-large"
+                ],
+                
+                initialize: function(el, options){
+                    this.element = document.id(el);
+                    this.setOptions(options);
+                    
+                    //Fill the tag with the name
+                    this.element.set("text", this.options.name);
+                    //make the tag clickable
+                    this.element.addEvent("click", this.poop.bind(this));
+                },
+                
+                getSize: function(){
+                    return this.sizeTypes[this.options.size];
+                },
+
+                sleep: function(){
+                    alert("You see a " + this.getSize() + " ball of fur.");
+                },
+
+                eat: function(){
+                    alert("yum!");
+                },
+
+                run: function(){
+                    alert("A " + this.options.color + " streak flies across the floor.");
+                },
+
+                poop: function(){
+                    alert(this.options.name + " feels better.");
+                }
+            });
+            
+            document.addEvent("domready", function(){
+                var cat1 = new Cat("c1", {name:"Garfield", color:"orange with black stripes", gender:"m"});
+                var cat2 = new Cat("c2", {name:"Harold", size:2});
+                var cat3 = new Cat("c3", {name:"Gina"});
+                console.log(cat1);
+            });
+        </script>
+    </head>
+    <body>
+        <h1 id="c1">
+            
+        </h1>
+        <h1 id="c2">
+            
+        </h1>
+        <h1 id="c3">
+            
+        </h1>
+    </body>
+</html>

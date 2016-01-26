@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <style>
+            section{
+                display: none;
+            }
+            
+            section.showing{
+                display: block;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.5.2/mootools.min.js"></script>
+        <script src="moomore.js"></script>
+        <script>
+        document.addEvent("domready", function(){
+            var nav = document.id("main_nav");
+            var atags = nav.getElements("a");
+            var sections = document.getElements("section");
+            
+            nav.addEvent("mouseover", function(e){
+                atags.morph({
+                    "font-size": 25,
+                    "margin-left": 12
+                });
+            });
+            
+            nav.addEvent("mouseover", function(e){
+                atags.setStyles({
+                    color: "red"
+                });
+            });
+            
+            nav.addEvent("mouseout", function(e){
+                atags.morph({
+                    "font-size": 15,
+                    "margin-left": 1
+                });
+            });
+            
+            atags.addEvent("click", function(e){
+                e.stop();
+                for(var i = 0; i < atags.length;++i){
+                    if(atags[i] == this){
+                        sections[i].reveal();
+                    }else{
+                        sections[i].dissolve();
+                    }
+                }
+                
+            });
+        });
+        
+        </script>
+    </head>
+    <body>
+        <nav id="main_nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Stuff</a>
+            <a href="#">Why us?</a>
+        </nav>
+        <section>
+            <h1>
+                Home
+            </h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque accusamus, consequuntur necessitatibus provident deleniti cumque vero! Illo fugiat, porro quisquam distinctio dolorem repellendus harum eius inventore sunt provident voluptatibus amet.
+            </p>            
+        </section>
+        <section>
+            <h2>
+                About
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores animi obcaecati quibusdam dignissimos ipsum dolor cumque quasi qui repellat aperiam autem, laudantium sint voluptas est reprehenderit quidem recusandae assumenda deleniti?
+            </p>
+        </section>
+        <section>
+            <h2>
+                Stuff
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores animi obcaecati quibusdam dignissimos ipsum dolor cumque quasi qui repellat aperiam autem, laudantium sint voluptas est reprehenderit quidem recusandae assumenda deleniti?
+            </p>
+        </section>
+        <section>
+            <h2>
+                Why us?
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores animi obcaecati quibusdam dignissimos ipsum dolor cumque quasi qui repellat aperiam autem, laudantium sint voluptas est reprehenderit quidem recusandae assumenda deleniti?
+            </p>
+        </section>
+    </body>
+</html>

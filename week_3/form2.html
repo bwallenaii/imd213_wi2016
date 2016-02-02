@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.6.0/mootools.min.js"></script>
+        <script src="js/moomore.js"></script>
+        <script src="js/plugins/formcheck/lang/en.js"></script>
+        <script src="js/plugins/formcheck/formcheck-yui.js"></script>
+        <link rel="stylesheet" href="js/plugins/formcheck/theme/blue/formcheck.css" media="screen" type="text/css"></script>
+        <style>
+            label, button {
+                display: block;
+                margin: 10px 0 0 0;
+            }
+            #loading{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            Contact me!
+        </h1>
+        <h3>
+            I'm so lonely
+        </h3>
+        <form id="contact_form" action="process.php" method="post" enctype="multipart/form-data">
+            <label>
+                E-mail: <input type="text" name="email" class="validate['required','email']" />
+            </label>
+            <label>
+                Subject: <input type="text" name="subject" class="validate['required','length[2,-1]']" />
+            </label>
+            <h5>
+                What do you like?
+            </h5>
+            <label>
+                <input type="checkbox" name="ilike[]" value="cats" />Cats
+            </label>
+            <label>
+                <input type="checkbox" name="ilike[]" value="dogs" />Dogs
+            </label>
+            <label>
+                <input type="checkbox" name="ilike[]" value="rats" />Rats
+            </label>
+            <label>
+                <input type="checkbox" name="ilike[]" value="turtles" />Turtles
+            </label>
+            <label>
+                <input type="checkbox" name="ilike[]" value="girraffes" />Girraffes
+            </label>
+            <label>
+                Content:
+                <textarea name="content"></textarea>
+            </label>
+            <button type="submit">
+                Submit
+            </button>
+            <button type="reset">
+                Reset
+            </button>
+        </form>
+        <div id="loading">
+            <img src="728.gif" />
+        </div>
+        <div id="results">
+            
+        </div>
+        <script>
+        new FormCheck("contact_form", {
+            submitByAjax: true,
+            ajaxResponseDiv: "results",
+            onAjaxRequest: function(){
+                document.id("contact_form").setStyle("display", "none");
+                document.id("loading").setStyle("display", "block");
+            },
+            onAjaxSuccess: function(a){
+                document.id("loading").setStyle("display", "none");
+            },
+            onAjaxFailure: function(){
+                console.log("Ruh-roh");
+            }
+        });
+        </script>
+    </body>
+</html>

@@ -1,16 +1,29 @@
+(function(){
 "use strict";
 var ContentFlipper = class {
     
-    constructor(el){
+    constructor(el, options){
         this.element = document.getElementById(el);
         
+        this.options = {
+            contentSectionSelector: "section"
+        };
+        
+        this.mergeOptions(options);
+        
         this.navTags = this.element.querySelector("ul").querySelectorAll("li");
-        this.contentSections = this.element.querySelectorAll(".content > section");
+        this.contentSections = this.element.querySelectorAll(".content > " + this.options.contentSectionSelector);
         
         this.hideAllSections();
         
         for(var i = 0; i < this.navTags.length;++i){
             this.navTags[i].addEventListener("click", this.navClicked.bind(this));
+        }
+    }
+    
+    mergeOptions(opts){
+        for(var optName in opts){
+           this.options[optName] = opts[optName]; 
         }
     }
     
@@ -33,3 +46,5 @@ var ContentFlipper = class {
     }
     
 };
+    
+})();

@@ -1,8 +1,9 @@
-<html>
+<!DOCTYPE html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.5.2/mootools.min.js"></script>
+        <!--script src="https://ajax.googleapis.com/ajax/libs/mootools/1.5.2/mootools.min.js"></script>
         <script src="js/moomore.js"></script>
-        <script src="js/content-flipper.js"></script>
+        <script src="js/content-flipper.js"></script-->
+        <script src="js/content-flipper-raw.js"></script>
     </head>
     <body>
         <div id="content-flipper-1">
